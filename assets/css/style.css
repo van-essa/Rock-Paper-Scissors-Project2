@@ -1,5 +1,5 @@
 /* Google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Bellota+Text:wght@300&family=Lato:ital,wght@1,300&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swapt');
 
 * {
     margin: 0;
@@ -7,22 +7,16 @@
     box-sizing: border-box;
 }
 
-:root {
-    --background: #36454F;
-    --text: #F7F7F7;
-    --gray: #848483;
-    --start: #2f4f4f;
-}
-
 body {
-    background: var(--background);
-    color: var(--text);
-    font-family: 'Lato', sans-serif;
+    background-color: #FEC5E5;
+    color: #000;
+    font-family: "Lobster", sans-serif;
+    text-align: center;
     position: relative;
 }
 
 html {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 #homepage {
@@ -42,6 +36,7 @@ html {
 .icons {
     margin-bottom: 2rem;
     animation: fadeIn ease 3s;
+    color:#FFF
 }
 
 @keyframes fadeIn {
@@ -59,22 +54,33 @@ html {
     margin: 0 10px;
 }
 
+ul {
+    list-style-type: none;
+}
+
+ul li::before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    padding: 0 10px 0 0;
+}
+
 .btn {
     padding: 1rem 2rem;
-    font-size: 1.8rem;
+    font-size: 3rem;
     border: 1px solid #FFF;
     margin-bottom: 3rem;
 }
 
 #start:hover {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: #FFF;
+    color: #FEC5E5;
 }
 
 #start {
-    background-color: var(--start);
-    color: #FFF;
-    width: 30%;
+    background-color: #FFF;
+    color: #FEC5E5;
+    width: 10%;
+    font-family: "Lobster", sans-serif;
 }
 
 .how-to-play h2 {
@@ -87,7 +93,7 @@ html {
 }
 
 #rules li {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     font-size: 1.2rem;
 }
 
@@ -134,8 +140,9 @@ html {
 
 .player, .computer {
     flex: 50%;
-    margin: 1rem;
-    border: 1px solid var(--gray);
+    margin: 8rem;
+    border: 4px solid #000;
+    background-color: #fff;
     padding: 1rem 0;
 }
 
@@ -159,6 +166,18 @@ html {
 .computer i {
     font-size: 2rem;
     margin: 1rem;
+}
+
+/* Image layout */
+.div-wrapper {
+    position: relative;
+    height: 100px;
+    width: 500px;
+}
+
+.div-wrapper img {
+    left: 0;
+    bottom: 0;
 }
 
 /* Modal layout */

@@ -16,27 +16,24 @@ const modalParagraph = document.getElementsByClassName('modal-result')[0];
 let playerScore = 0;
 let computerScore = 0;
 
-// Game screens variables.
-const homeScreen = document.getElementById('home-screen');
-const gameScreen = document.getElementById('game-screen');
-const bonusScreen = document.getElementById('bonus-game');
+// Game pages variables
+const homePage = document.getElementById('homepage');
+const gamePage = document.getElementById('gamepage');
 
-// Game audio variables.
+// Game audio variables
 const clickSound = new Audio('assets/sounds/click.mp3');
-const winSound = new Audio('assets/sounds/winner.mp3');
-const loseSound = new Audio('assets/sounds/lose.mp3');
+const clapSound = new Audio('assets/sounds/clap.mp3');
+const looseSound = new Audio('assets/sounds/loose.mp3');
 
-// Navigation buttons variables.
+// Navigation buttons variables
 const startBtn = document.getElementById('start');
-const bonusBtn = document.getElementById('bonus');
 const homeBtn = document.getElementsByClassName('home');
 
-startBtn.addEventListener('click', displayGameScreen);
-bonusBtn.addEventListener('click', displayBonusScreen);
+startBtn.addEventListener('click', displayGamePage);
 
 // Loop over home buttons class and add event listener.
 for (let home of homeBtn) {
-    home.addEventListener('click', displayHomeScreen);
+    home.addEventListener('click', displayHomePage);
 }
 
 /**
@@ -59,18 +56,18 @@ closeBtn.addEventListener('click', () => {
  * Applies colour and icon.
  */
 toggleAudio.addEventListener('click', (e) => {
-    if (clickSound.muted === false && winSound.muted === false && loseSound.muted === false) {
+    if (clickSound.muted === false && winSound.muted === false && looseSound.muted === false) {
         e.target.style.color = 'red';
         e.target.className = 'fas fa-volume-mute';
         clickSound.muted = true;
-        winSound.muted = true;
-        loseSound.muted = true;
+        clapSound.muted = true;
+        looseSound.muted = true;
     } else {
         e.target.style.color = 'white';
         e.target.className = 'fas fa-volume-up';
         clickSound.muted = false;
-        winSound.muted = false;
-        loseSound.muted = false;
+        clapSound.muted = false;
+        looseSound.muted = false;
     }
 });
 
@@ -167,12 +164,12 @@ function showWinner(winnerModal, modalHeader, modalParagraph) {
         winnerModal.style.display = 'block';
         modalHeader.textContent = 'You Win The Game!';
         modalParagraph.textContent = `You: ${playerScore} > Computer: ${computerScore}`;
-        winSound.play();
+        clapSound.play();
     } else if (computerScore === 5) {
         winnerModal.style.display = 'block';
-        modalHeader.textContent = 'You Lose The Game!';
+        modalHeader.textContent = 'You Lost The Game!';
         modalParagraph.textContent = `Computer: ${computerScore} > You: ${playerScore}`;
-        loseSound.play();
+        looseSound.play();
     }
 }
 
@@ -218,23 +215,20 @@ function resetGame(player, computer) {
 }
 
 // Game screen display functions.
-function displayHomeScreen() {
-    bonusScreen.style.display = 'none';
-    gameScreen.style.display = 'none';
-    homeScreen.style.display = 'flex';
+function displayHomePage() {
+    gamePage.style.display = 'none';
+    homePage.style.display = 'flex';
     document.getElementsByClassName('controls')[0].style.display = 'none';
 }
 
-function displayGameScreen() {
-    homeScreen.style.display = 'none';
-    bonusScreen.style.display = 'none';
-    gameScreen.style.display = 'block';
+function displayGamePage() {
+    homePage.style.display = 'none';
+    gamePage.style.display = 'block';
     document.getElementsByClassName('controls')[0].style.display = 'flex';
 }
 
 function displayBonusScreen() {
-    homeScreen.style.display = 'none';
-    gameScreen.style.display = 'none';
-    bonusScreen.style.display = 'block';
+    homePage.style.display = 'none';
+    gamePage.style.display = 'none';
     document.getElementsByClassName('controls')[0].style.display = 'flex';
 }
