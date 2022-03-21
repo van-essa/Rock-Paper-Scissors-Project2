@@ -1,4 +1,4 @@
-// Global variables.
+// Global variables
 const userChoices = document.getElementsByClassName('choice');
 const roundText = document.getElementById('round-text');
 const closeBtn = document.getElementsByClassName('close')[0];
@@ -38,22 +38,22 @@ for (let home of homeBtn) {
 
 /**
  * Loops over each choice
- * Adds an event listener to each choice.
+ * Adds an event listener to each choice
  */
 for (let choice of userChoices) {
     choice.addEventListener('click', playGame);
 }
 
 /**
- * Close winner modal that is passed into the function.
+ * Close winner modal that is passed into the function
  */
 closeBtn.addEventListener('click', () => {
     closeModal(winnerModal);
 });
 
 /**
- * Checks to see if the audio is muted or unmuted.
- * Applies colour and icon.
+ * Checks to see if the audio is muted or unmuted
+ * Applies colour and icon
  */
 toggleAudio.addEventListener('click', (e) => {
     if (clickSound.muted === false && clapSound.muted === false && looseSound.muted === false) {
@@ -72,9 +72,9 @@ toggleAudio.addEventListener('click', (e) => {
 });
 
 /**
- * Creates an array of choices.
- * Generates a random choice from choices array.
- * Assigns random choice to ComputerChoice variable.
+ * Creates an array of choices
+ * Generates a random choice from choices array
+ * Assigns random choice to ComputerChoice variable
  */
 function generateComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
@@ -84,9 +84,9 @@ function generateComputerChoice() {
 }
 
 /**
- * Targets computer-icon ID.
- * A class is dynamically added to element with computer-icon ID.
- * The computerChoice variable is added to the end of new class.
+ * Targets computer-icon ID
+ * A class is dynamically added to element with computer-icon ID
+ * The computerChoice variable is added to the end of new class
  */
 function displayComputerChoice() {
     let computerIcon = document.getElementById('computer-icon');
@@ -94,10 +94,10 @@ function displayComputerChoice() {
 }
 
 /**
- * Checks a concatenated string of userChoice and ComputerChoice.
+ * Checks a concatenated string of userChoice and ComputerChoice
  * Element with an ID of round-text is targeted and its innerHTML is set to notify the user if they are the round winner, round loser or if the round is a draw.
- * User score is incremented if they have won the round.
- * Computer score is incremented if they have won the round.
+ * User score is incremented if they have won the round
+ * Computer score is incremented if they have won the round
  */
 function getResult() {
     switch (userChoice + computerChoice) {
@@ -124,25 +124,25 @@ function getResult() {
 }
 
 /**
- * Player score is incremented.
+ * Player score is incremented
  */
 function incrementPlayerScore(score) {
     score.innerHTML = ++playerScore;
 }
 
 /**
- * Computer score is incremented.
+ * Computer score is incremented
  */
 function incrementComputerScore(score) {
     score.innerHTML = ++computerScore;
 }
 
 /**
- * Checks player and computer score is eqaul to 5.
- * Modal display is set to block.
- * Modal header notifies the user if they have either won or lost the game.
- * Modal paragraph shows the final score of both players.
- * If the user has won, the winning game sound will play. If the user loses, the losing game sound will play.
+ * Checks player and computer score is eqaul to 3
+ * Modal display is set to block
+ * Modal header notifies the user if they have either won or lost the game
+ * Modal paragraph shows the final score of both players
+ * If the user has won, the winning game sound will play. If the user loses, the losing game sound will play
  */
 function showWinner(winnerModal, modalHeader, modalParagraph) {
     if (playerScore === 3) {
@@ -159,11 +159,11 @@ function showWinner(winnerModal, modalHeader, modalParagraph) {
 }
 
 /**
- * Checks the ID of the element that has been clicked on.
- * The generateComputerChoice function is invoked.
- * The getResult function is invoked.
- * The showWinner function is invoked, passing the modal parameters.
- * The click audio is played each time the player makes a choice. 
+ * Checks the ID of the element that has been clicked on
+ * The generateComputerChoice function is invoked
+ * The getResult function is invoked
+ * The showWinner function is invoked, passing the modal parameters
+ * The click audio is played each time the player makes a choice.
  */
 function playGame(e) {
     userChoice = e.target.id;
@@ -174,8 +174,8 @@ function playGame(e) {
 }
 
 /**
- * Modal display is set to none.
- * ResetGame function is invoked passing score parameters. 
+ * Modal display is set to none
+ * ResetGame function is invoked passing score parameters.
  */
 function closeModal(modal) {
     modal.style.display = 'none';
@@ -183,11 +183,11 @@ function closeModal(modal) {
 }
 
 /**
- * Player parameters are passed.
- * Player score and Computer score are set to 0.
- * Player innerHTML and Computer innerHTML is set to new scores.
- * Round text is set to an empty string.
- * Computer icon is set back to a question mark.
+ * Player parameters are passed
+ * Player score and Computer score are set to 0
+ * Player innerHTML and Computer innerHTML is set to new scores
+ * Round text is set to an empty string
+ * Computer icon is set back to a question mark
  */
 function resetGame(player, computer) {
     playerScore = 0;
