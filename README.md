@@ -119,6 +119,7 @@ The site was deployed to GitHub pages. The steps to deploy are as follows:
 ## 11. Credits
 Content
 - Instructions on how to implement the HTML and CSS code using GitHub was taken from the HTML, CSS and Javascript course from Code Institute
+- Inspired by [Jack Controy](https://github.com/Jack112-create) and [Lucy Glanville Brown](https://github.com/Lucy-Glanville-Brown) projects
  
 Media
 - The image on the Game page is from [Canva](www.canva.com)
