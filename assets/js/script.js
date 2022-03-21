@@ -56,7 +56,7 @@ closeBtn.addEventListener('click', () => {
  * Applies colour and icon.
  */
 toggleAudio.addEventListener('click', (e) => {
-    if (clickSound.muted === false && winSound.muted === false && looseSound.muted === false) {
+    if (clickSound.muted === false && clapSound.muted === false && looseSound.muted === false) {
         e.target.style.color = 'red';
         e.target.className = 'fas fa-volume-mute';
         clickSound.muted = true;
@@ -195,7 +195,6 @@ function resetGame(player, computer) {
     player.innerHTML = playerScore;
     computer.innerHTML = computerScore;
     roundText.innerHTML = '';
-    bonusRoundText.innerHTML = '';
     document.getElementById('computer-icon').className = `fas fa-question`;
 }
 
@@ -209,11 +208,5 @@ function displayHomePage() {
 function displayGamePage() {
     homePage.style.display = 'none';
     gamePage.style.display = 'block';
-    document.getElementsByClassName('controls')[0].style.display = 'flex';
-}
-
-function displayBonusScreen() {
-    homePage.style.display = 'none';
-    gamePage.style.display = 'none';
     document.getElementsByClassName('controls')[0].style.display = 'flex';
 }

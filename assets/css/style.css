@@ -212,7 +212,7 @@ ul li::before {
 
 .modal-content {
     position: relative;
-    background-color: #f1d68b;
+    background-color: #ff00c8;
     text-align: center;
     color: black;
     margin: 15% auto; 
@@ -231,7 +231,7 @@ ul li::before {
 }
   
 .close:hover {
-    color: rgb(221, 19, 19);
+    color: #f1d68b;
     cursor: pointer;
 }
 
