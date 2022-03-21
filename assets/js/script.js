@@ -7,35 +7,35 @@ let computerChoice;
 let toggleAudio = document.getElementById('audio');
 let scoreHTML = document.getElementsByClassName('score')[0];
 let computerHTML = document.getElementsByClassName('comp-score')[0];
- 
+
 const winnerModal = document.getElementsByClassName('winner-modal')[0];
 const modalHeader = document.getElementsByClassName('modal-header')[0];
 const modalParagraph = document.getElementsByClassName('modal-result')[0];
- 
+
 // Default score values
 let playerScore = 0;
 let computerScore = 0;
- 
+
 // Game pages variables
 const homePage = document.getElementById('homepage');
 const gamePage = document.getElementById('gamepage');
- 
+
 // Game audio variables
 const clickSound = new Audio('assets/sounds/click.mp3');
 const clapSound = new Audio('assets/sounds/clap.mp3');
 const looseSound = new Audio('assets/sounds/loose.mp3');
- 
+
 // Navigation buttons variables
 const startBtn = document.getElementById('start');
 const homeBtn = document.getElementsByClassName('home');
- 
+
 startBtn.addEventListener('click', displayGamePage);
- 
+
 // Loop over home buttons class and add event listener.
 for (let home of homeBtn) {
     home.addEventListener('click', displayHomePage);
 }
- 
+
 /**
  * Loops over each choice
  * Adds an event listener to each choice.
@@ -43,14 +43,14 @@ for (let home of homeBtn) {
 for (let choice of userChoices) {
     choice.addEventListener('click', playGame);
 }
- 
+
 /**
  * Close winner modal that is passed into the function.
  */
 closeBtn.addEventListener('click', () => {
     closeModal(winnerModal);
 });
- 
+
 /**
  * Checks to see if the audio is muted or unmuted.
  * Applies colour and icon.
@@ -70,19 +70,19 @@ toggleAudio.addEventListener('click', (e) => {
         looseSound.muted = false;
     }
 });
- 
+
 /**
  * Creates an array of choices.
  * Generates a random choice from choices array.
  * Assigns random choice to ComputerChoice variable.
  */
 function generateComputerChoice() {
-    const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+    const choices = ['rock', 'paper', 'scissors'];
     const randomChoice = choices[Math.floor(Math.random() * choices.length)];
     computerChoice = randomChoice;
     displayComputerChoice();
 }
- 
+
 /**
  * Targets computer-icon ID.
  * A class is dynamically added to element with computer-icon ID.
@@ -92,7 +92,7 @@ function displayComputerChoice() {
     let computerIcon = document.getElementById('computer-icon');
     computerIcon.className = `far fa-hand-${computerChoice}`;
 }
- 
+
 /**
  * Checks a concatenated string of userChoice and ComputerChoice.
  * Element with an ID of round-text is targeted and its innerHTML is set to notify the user if they are the round winner, round loser or if the round is a draw.
@@ -102,56 +102,41 @@ function displayComputerChoice() {
 function getResult() {
     switch (userChoice + computerChoice) {
         case 'rockscissors':
-        case 'rocklizard':
         case 'paperrock':
         case 'paperspock':
         case 'scissorspaper':
-        case 'scissorslizard':
-        case 'lizardpaper':
-        case 'lizardspock':
-        case 'spockscissors':
-        case 'spockrock':
             console.log('You win!');
-            roundText.innerHTML = 'You Win The Round!';
+            roundText.innerHTML = 'Great Job! You Win The Round!';
             incrementPlayerScore(scoreHTML);
             break;
         case 'scissorsrock':
-        case 'lizardrock':
         case 'rockpaper':
-        case 'spockpaper':
         case 'paperscissors':
-        case 'lizardscissors':
-        case 'paperlizard':
-        case 'spocklizard':
-        case 'scissorsspock':
-        case 'rockspock':
-            roundText.innerHTML = 'Computer Wins The Round!';
+            roundText.innerHTML = 'Oh No! The Computer Wins The Round!';
             incrementComputerScore(computerHTML);
             break;
         case 'rockrock':
         case 'paperpaper':
         case 'scissorsscissors':
-        case 'lizardlizard':
-        case 'spockspock':
-            roundText.innerHTML = 'Draw!';
+            roundText.innerHTML = 'It Is A Draw!';
             break;
     }
 }
- 
+
 /**
  * Player score is incremented.
  */
 function incrementPlayerScore(score) {
     score.innerHTML = ++playerScore;
 }
- 
+
 /**
  * Computer score is incremented.
  */
 function incrementComputerScore(score) {
     score.innerHTML = ++computerScore;
 }
- 
+
 /**
  * Checks player and computer score is eqaul to 5.
  * Modal display is set to block.
@@ -160,25 +145,25 @@ function incrementComputerScore(score) {
  * If the user has won, the winning game sound will play. If the user loses, the losing game sound will play.
  */
 function showWinner(winnerModal, modalHeader, modalParagraph) {
-    if (playerScore === 5) {
+    if (playerScore === 3) {
         winnerModal.style.display = 'block';
-        modalHeader.textContent = 'You Win The Game!';
+        modalHeader.textContent = 'Congrats! You Wone The Game!';
         modalParagraph.textContent = `You: ${playerScore} > Computer: ${computerScore}`;
         clapSound.play();
-    } else if (computerScore === 5) {
+    } else if (computerScore === 3) {
         winnerModal.style.display = 'block';
         modalHeader.textContent = 'You Lost The Game!';
         modalParagraph.textContent = `Computer: ${computerScore} > You: ${playerScore}`;
         looseSound.play();
     }
 }
- 
+
 /**
  * Checks the ID of the element that has been clicked on.
  * The generateComputerChoice function is invoked.
  * The getResult function is invoked.
  * The showWinner function is invoked, passing the modal parameters.
- * The click audio is played each time the player makes a choice.
+ * The click audio is played each time the player makes a choice. 
  */
 function playGame(e) {
     userChoice = e.target.id;
@@ -187,16 +172,16 @@ function playGame(e) {
     showWinner(winnerModal, modalHeader, modalParagraph);
     clickSound.play();
 }
- 
+
 /**
  * Modal display is set to none.
- * ResetGame function is invoked passing score parameters.
+ * ResetGame function is invoked passing score parameters. 
  */
 function closeModal(modal) {
     modal.style.display = 'none';
     resetGame(scoreHTML, computerHTML);
 }
- 
+
 /**
  * Player parameters are passed.
  * Player score and Computer score are set to 0.
@@ -213,20 +198,20 @@ function resetGame(player, computer) {
     bonusRoundText.innerHTML = '';
     document.getElementById('computer-icon').className = `fas fa-question`;
 }
- 
-// Game screen display functions.
+
+// Game page display functions
 function displayHomePage() {
     gamePage.style.display = 'none';
     homePage.style.display = 'flex';
     document.getElementsByClassName('controls')[0].style.display = 'none';
 }
- 
+
 function displayGamePage() {
     homePage.style.display = 'none';
     gamePage.style.display = 'block';
     document.getElementsByClassName('controls')[0].style.display = 'flex';
 }
- 
+
 function displayBonusScreen() {
     homePage.style.display = 'none';
     gamePage.style.display = 'none';
